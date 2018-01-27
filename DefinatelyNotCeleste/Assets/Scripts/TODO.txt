@@ -1,0 +1,14 @@
+- Player movement
+	Removing wall jumping
+	Do wallclimbing (set amount)
+	Make wallclimbing cancellable
+	Make everything feel good
+	Fix bugs
+
+- Make levels
+
+
+- Intermission TODO
+
+
+	
