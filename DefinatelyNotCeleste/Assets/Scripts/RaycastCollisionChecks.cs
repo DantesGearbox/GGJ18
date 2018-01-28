@@ -136,7 +136,7 @@ public class RaycastCollisionChecks : MonoBehaviour {
 	}
 
 	public bool OnGround(){
-		return collisions.bot;
+		return collisions.bot || collisions.immediateBot;
 	}
 
 	public bool GetImmediateBot(){

@@ -10,7 +10,7 @@ public class Throwing : MonoBehaviour {
 	private GameObject throwHandler;
 	public GameObject ball;
 
-	private float throwStrength = 50.0f;
+	private float throwStrength = 45.0f;
 
 	//Controls
 	public PlayerLocomotion.BUTTONS throwButton = PlayerLocomotion.BUTTONS.Square;
@@ -53,6 +53,11 @@ public class Throwing : MonoBehaviour {
 
 				float axisX = playerInput.getAxis (PlayerLocomotion.AXIS.StickLeftX);
 				float axisY = playerInput.getAxis (PlayerLocomotion.AXIS.StickLeftY);
+
+				if(axisX == 0.0f && axisY == 0.0f){
+					axisX = .7f;
+					axisY = .7f;
+				}
 
 				rb.velocity = new Vector2(axisX * throwStrength, axisY * throwStrength);
 				Debug.Log ("VelocityX: " + rb.velocity.x + ", VelocityY: " + rb.velocity.y);

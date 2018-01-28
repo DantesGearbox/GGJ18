@@ -11,6 +11,6 @@ public class FollowPlayer : MonoBehaviour {
 	//}
 		
 	void FixedUpdate () {
-		transform.position = Vector3.Lerp (transform.position, new Vector3 (jc.transform.position.x, jc.transform.position.y, transform.position.z), 0.1f);
+		transform.position = Vector3.Lerp (transform.position, new Vector3 (jc.transform.position.x, jc.transform.position.y, transform.position.z), 0.15f);
 	}
 }

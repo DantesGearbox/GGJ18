@@ -118,6 +118,13 @@ public class PlayerLocomotion : MonoBehaviour {
 		SetupMoveAndJumpSpeed ();
 	}
 
+	void OnCollisionEnter2D(Collision2D coll) {
+		if (coll.gameObject.tag == "Obstacle") {
+
+			ySpeed = 0.0f;
+		}
+	}
+
 	// Update is called once per frame
 	void Update (){
 
@@ -128,7 +135,7 @@ public class PlayerLocomotion : MonoBehaviour {
 
 	void CollisionCheck(){
 		if(raycastCollisionChecks.GetImmediateBot()){
-			ySpeed = 0.0f;
+			//ySpeed = 0.0f;
 		}
 	}
 
@@ -221,11 +228,6 @@ public class PlayerLocomotion : MonoBehaviour {
 				if(raycastCollisionChecks.OnGround ()){
 					ySpeed = 0;
 					ySpeed += maxJumpVelocity;
-
-				} else if(raycastCollisionChecks.CollidingLeftOrRight ()){
-					ySpeed += wallJumpYVelocity;
-					xSpeed += wallJumpXVelocity * -direction;
-					//rigidbody2d.velocity.x += wallJumpXVelocity * direction;
 				}
 			}
 			if (playerInput.WasButtonReleased (jumpButton)) {
@@ -240,12 +242,6 @@ public class PlayerLocomotion : MonoBehaviour {
 
 		//We apply gravity ourselves, going past Unitys RB gravity
 		if(!raycastCollisionChecks.OnGround()) ySpeed -= gravity * Time.deltaTime;
-
-		if(raycastCollisionChecks.CollidingLeftOrRight ()){
-			if(ySpeed < 0.0f){
-				ySpeed = -slideDownSpeed;
-			}
-		}
 
 		rigidbody2d.velocity = new Vector2 (xSpeed/*rigidbody2d.velocity.x*/, ySpeed);	
 	}
